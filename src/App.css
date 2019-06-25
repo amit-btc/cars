@@ -1,33 +1,37 @@
-.App {
-  text-align: center;
+.navbar-custom{
+  padding: 1em 4em;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 3em;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.filterBox{
+  border:1px solid #eee;
+  padding:1em;
+  max-height: 250px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.carsBlock{
+  padding:0 1em;
+}
+.carBlockItem{
+  border:1px solid #eee;
+  margin:0;
+  padding:1em;
+  margin-bottom: 1em;
+}
+.primaryButton{
+  border-radius: 2px;
+  padding:0.3em 3em;
+  background:#EA7F28;
+  border-color:#EA7F28;
+}
+.car-image{
   display: flex;
-  flex-direction: column;
+  padding:0.6em;
+  width:100%;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.primaryButton:hover,.primaryButton:active,.primaryButton:visited,
+.primaryButton:not(:disabled):not(.disabled):active, .primaryButton:not(:disabled):not(.disabled).active, .show > .primaryButton.dropdown-toggle{
+  background:#EA7F28;
+  border-color:#EA7F28;
 }
