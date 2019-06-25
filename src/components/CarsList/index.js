@@ -1,42 +1,108 @@
 import React, { Component } from "react";
-import { Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
-import { fetchCars } from "../../actions/cars";
+import CarsListItem from "./carListItem";
+import { Pagination } from "react-bootstrap";
+import Loader from "./loading";
 
 class CarsList extends Component {
-  componentWillMount() {
-    this.props.fetchCars();
+  constructor(props) {
+    super(props);
+    this.state = {
+      cars: [],
+      totalPageCount: 0,
+      totalCarsCount: 0,
+      currentPage: 1,
+      isLoading: false
+    };
   }
+  fetchCarsList = () => {
+    const { manufacturer, color, sortAsc } = this.props;
+    const sortBy = sortAsc ? "asc" : "des";
+    fetch(
+      `http://localhost:3001/cars?manufacturer=${manufacturer}&color=${color}&sort=${sortBy}&page=${
+        this.state.currentPage
+      }`
+    )
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          cars: data.cars,
+          totalPageCount: data.totalPageCount,
+          totalCarsCount: data.totalCarsCount,
+          isLoading: false
+        })
+      );
+  };
+  componentDidUpdate(prevProps) {
+    const { manufacturer, color, sortAsc } = this.props;
+    if (
+      prevProps.manufacturer !== manufacturer ||
+      prevProps.color !== color ||
+      prevProps.sortAsc !== sortAsc
+    )
+      this.setState({ isLoading: true }, this.fetchCarsList);
+  }
+  updatePage = newPageNumber => {
+    this.setState(
+      { isLoading: true, currentPage: newPageNumber },
+      this.fetchCarsList
+    );
+  };
   render() {
-    console.log(this.props);
+    const { currentPage, totalPageCount, isLoading } = this.state;
     return (
-      this.props.cars &&
-      this.props.cars.map(item => (
-        <Row className="carBlockItem" key={item.stockNumber}>
-          <Col sm={2}><img
-          src={item.pictureUrl}
-          className="car-image"
-          alt="auto1"
-        /></Col>
-          <Col sm={10}>
-            <h5>{item.manufacturerName}</h5>
-            <p style={{ color: "#333", fontSize: 12, marginBottom: 0 }}>
-              Stock #12345 - 1000 KM - Petrol - Black
-            </p>
-            <a href="/" style={{ fontSize: 12 }}>
-              View Details
-            </a>
-          </Col>
-        </Row>
-      ))
+      <React.Fragment>
+        {isLoading && <Loader />}
+        {this.state.cars &&
+          this.state.cars.map(item => (
+            <CarsListItem data={item} key={item.stockNumber} />
+          ))}
+        <div>
+          <Pagination className="pagination">
+            <Pagination.First
+              onClick={() => {
+                this.updatePage(1);
+              }}
+            >
+              First
+            </Pagination.First>
+            <Pagination.Prev
+              onClick={() => {
+                this.updatePage(currentPage - 1);
+              }}
+            >
+              Prev
+            </Pagination.Prev>
+            <Pagination.Item active>
+              Page {currentPage} of {totalPageCount}
+            </Pagination.Item>
+            <Pagination.Next
+              onClick={() => {
+                this.updatePage(currentPage + 1);
+              }}
+            >
+              Next
+            </Pagination.Next>
+            <Pagination.Last
+              onClick={() => {
+                this.updatePage(totalPageCount);
+              }}
+            >
+              Last
+            </Pagination.Last>
+          </Pagination>
+        </div>
+      </React.Fragment>
     );
   }
 }
 const mapStateToProps = state => ({
-  cars: state.cars.data.cars
+  manufacturer: state.filters.manufacturer,
+  color: state.filters.color,
+  sortAsc: state.filters.sortAsc
 });
 
 export default connect(
   mapStateToProps,
-  { fetchCars }
+  null
 )(CarsList);

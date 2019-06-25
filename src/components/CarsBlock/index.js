@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row,Form } from "react-bootstrap";
 import { connect } from "react-redux";
-import { fetchCars } from "../../actions/cars";
-import CarsList from "./components/CarsList/index";
+import CarsList from "../CarsList/index";
 
 class CarsBlock extends Component {
   componentWillMount() {
-    this.props.fetchCars();
   }
   render() {
-    console.log(this.props);
     return (
       <Col md={9} className="carsBlock">
         <Row>
@@ -21,13 +18,11 @@ class CarsBlock extends Component {
             <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Label>Color</Form.Label>
               <Form.Control as="select">
-                <option value="" selected disabled>
+                <option value="" disabled>
                   Sort by
                 </option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <option>Mileage Ascending</option>
+                <option>Mileage Descending</option>
               </Form.Control>
             </Form.Group>
           </Col>
@@ -37,11 +32,4 @@ class CarsBlock extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  cars: state.cars.data.cars
-});
-
-export default connect(
-  mapStateToProps,
-  { fetchCars }
-)(CarsBlock);
+export default CarsBlock;

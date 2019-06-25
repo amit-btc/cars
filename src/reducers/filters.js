@@ -3,32 +3,31 @@ import {
   FETCH_COLORS,
   SET_MANUFACTURER,
   SET_COLOR,
-  SET_ORDER,
+  SET_ORDER
 } from "../actions/types";
 
 const initalState = {
   manufacturers: {},
   colors: [],
-  isFetching:false,
-  orderAsc: true,
+  sortAsc: true,
   manufacturer: "",
-  color: ""
+  color: "",
 };
 
 export default function(state = initalState, action) {
   switch (action.type) {
     case FETCH_MANUFACTURERS:
-      console.log('FETCH_MANUFACTURERS');
       return {
         ...state,
         manufacturers: action.payload,
-        isFetching:!state.isFetching
+        manufacturer: action.payload.manufacturers[0].name
       };
 
     case FETCH_COLORS:
       return {
         ...state,
-        colors: action.payload.colors
+        colors: action.payload.colors,
+        color: action.payload.colors[0]
       };
 
     case SET_MANUFACTURER:
@@ -46,9 +45,9 @@ export default function(state = initalState, action) {
     case SET_ORDER:
       return {
         ...state,
-        orderAsc: !state.orderAsc
+        sortAsc: !state.sortAsc
       };
-
+    
     default:
       return state;
   }
