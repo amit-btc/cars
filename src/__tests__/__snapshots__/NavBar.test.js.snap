@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CarsListItem /> render() renders the component 1`] = `
+<ForwardRef
+  bg="#fff"
+  bsPrefix="navbar"
+  className="navbar-custom"
+  expand="lg"
+  innerRef={null}
+>
+  <NavbarBrand
+    as={[Function]}
+    to="/"
+  >
+    <img
+      alt="auto1"
+      className="d-inline-block align-top"
+      src="logo.png"
+      width="200"
+    />
+  </NavbarBrand>
+  <NavbarToggle
+    aria-controls="basic-navbar-nav"
+    label="Toggle navigation"
+  />
+  <NavbarCollapse
+    className="justify-content-end"
+  >
+    <NavLink
+      as={[Function]}
+      disabled={false}
+      href="#home"
+    >
+      Purchase
+    </NavLink>
+    <NavLink
+      as={[Function]}
+      disabled={false}
+      href="#link"
+    >
+      My Orders
+    </NavLink>
+    <NavLink
+      as={[Function]}
+      disabled={false}
+      href="#link"
+    >
+      Sell
+    </NavLink>
+  </NavbarCollapse>
+</ForwardRef>
+`;

@@ -5,14 +5,14 @@ import {
   SET_COLOR,
 } from "../actions/types";
 
-const initalState = {
+const initialState = {
   manufacturers: {},
   colors: [],
   manufacturer: "",
   color: "",
 };
 
-export default function(state = initalState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case FETCH_MANUFACTURERS:
       return {
