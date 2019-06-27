@@ -3,11 +3,12 @@ import {
     Navbar,
     Nav,
   } from "react-bootstrap";
+  import { Link } from "react-router-dom";
 
-export default function NavBar() {
+const NavBar=()=> {
   return (
     <Navbar bg="#fff" expand="lg" className="navbar-custom">
-      <Navbar.Brand href="#home">
+      <Navbar.Brand as={Link} to="/">
         <img
           src={require("../../logo.png")}
           width="200"
@@ -24,3 +25,4 @@ export default function NavBar() {
     </Navbar>
   );
 }
+export default NavBar;

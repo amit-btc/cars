@@ -2,7 +2,7 @@ import {
   FETCH_MANUFACTURERS,
   FETCH_COLORS,
   SET_MANUFACTURER,
-  SET_COLOR
+  SET_COLOR,
 } from "../actions/types";
 
 export const fetchManufacturers = () => dispatch => {

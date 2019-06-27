@@ -1,15 +1,16 @@
 .navbar-custom{
   padding: 1em 4em;
   border-bottom: 2px solid #eee;
-  margin-bottom: 3em;
 }
 .filterBox{
   border:1px solid #eee;
   padding:1em;
   max-height: 250px;
+  margin-top: 3em;
 }
 .carsBlock{
   padding:0 1em;
+  margin-top: 3em;
 }
 .carBlockItem{
   border:1px solid #eee;
@@ -26,7 +27,7 @@
 .car-image{
   display: flex;
   padding:0.6em;
-  width:100%;
+  margin:0 auto;
   align-items: center;
   justify-content: center;
 }
@@ -38,4 +39,25 @@
 .pagination{
   justify-content: center;
   margin:2em auto 4em auto;
+}
+.saveCarBlock{
+  border:1px solid #eee;
+  padding:1em;
+  min-height: 140px;
+  margin-top:6em;
+}
+/* overrides of bootstrap */
+.page-link,a,a:hover,.page-item.active .page-link{
+  color:#EA7F28;
+  background:#fff;
+  border:0;
+}
+.page-item.active .page-link{
+  color:#333;
+}
+.page-link:hover,.page-link:active,.page-link:visited,.page-link:focus,
+.page-link:not(:disabled):not(.disabled):active, .page-link:not(:disabled):not(.disabled).active, .show > .page-link.dropdown-toggle{
+background: #fff;
+color:#D37324;
+outline:0;
 }

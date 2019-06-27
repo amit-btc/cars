@@ -9,14 +9,20 @@ import {
 } from "../../actions/filters";
 
 class FilterBlock extends Component {
+  selectedColor = "";
+  selectedManufacturer = "";
+
   componentDidMount() {
     this.props.fetchColors();
     this.props.fetchManufacturers();
   }
   onChange = event => {
-    event.target.name === "setColor"
-      ? this.props.setColor(event.target.value)
-      : this.props.setManufacturer(event.target.value);
+    this[event.target.name] = event.target.value;
+  };
+  filterCars = () => {
+    this.selectedColor && this.props.setColor(this.selectedColor);
+    this.selectedManufacturer &&
+      this.props.setManufacturer(this.selectedManufacturer);
   };
   render() {
     const { manufacturers, colors } = this.props;
@@ -25,8 +31,9 @@ class FilterBlock extends Component {
         {colors && (
           <Form.Group>
             <Form.Label>Color</Form.Label>
-            <Form.Control as="select" onChange={this.onChange} name="setColor">
-              <option value="" disabled>
+            {/* Use defaultValue={'DEFAULT'}  to get rid of warning */}
+            <Form.Control as="select" defaultValue={'DEFAULT'} onChange={this.onChange} name="selectedColor">
+              <option value="DEFAULT" disabled>
                 All Car Colors
               </option>
               {colors.map((item, id) => (
@@ -43,9 +50,10 @@ class FilterBlock extends Component {
             <Form.Control
               as="select"
               onChange={this.onChange}
-              name="setManufacturer"
+              defaultValue={'DEFAULT'}
+              name="selectedManufacturer"
             >
-              <option value="" disabled>
+              <option value="DEFAULT" disabled>
                 All Manufacturers
               </option>
               {manufacturers.map((item, id) => (
@@ -60,6 +68,7 @@ class FilterBlock extends Component {
           variant="primary"
           className="primaryButton"
           style={{ float: "right" }}
+          onClick={this.filterCars}
         >
           Filter
         </Button>
@@ -69,7 +78,7 @@ class FilterBlock extends Component {
 }
 const mapStateToProps = state => ({
   manufacturers: state.filters.manufacturers.manufacturers,
-  colors: state.filters.colors,
+  colors: state.filters.colors
 });
 
 export default connect(

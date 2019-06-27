@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CarsListItem /> render() renders the component 1`] = `
+<Row
+  bsPrefix="row"
+  className="carBlockItem"
+  noGutters={false}
+>
+  <Col
+    sm={2}
+  >
+    <img
+      alt="auto1"
+      className="car-image"
+      src="http://localhost:3001/car.svg"
+      width={100}
+    />
+  </Col>
+  <Col
+    sm={10}
+  >
+    <h5>
+      Skoda
+    </h5>
+    <p
+      style={
+        Object {
+          "color": "#333",
+          "fontSize": 12,
+          "marginBottom": 0,
+        }
+      }
+    >
+      Stock 
+      10126
+      - 
+      135573
+       
+      km
+       -
+       
+      Petrol
+       - 
+      green
+    </p>
+    <Link
+      style={
+        Object {
+          "fontSize": 12,
+        }
+      }
+      to={
+        Object {
+          "pathname": "/cars/10126",
+          "state": Object {
+            "item": Object {
+              "color": "green",
+              "fuelType": "Petrol",
+              "manufacturerName": "Skoda",
+              "mileage": Object {
+                "number": 135573,
+                "unit": "km",
+              },
+              "modelName": "Roomster",
+              "pictureUrl": "http://localhost:3001/car.svg",
+              "stockNumber": 10126,
+            },
+          },
+        }
+      }
+    >
+       
+      View Details
+    </Link>
+  </Col>
+</Row>
+`;
