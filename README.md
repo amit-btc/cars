@@ -1,4 +1,4 @@
-Clone the applicaiton and run: 
+Clone the application and run: 
 
 `cd auto1 && yarn start`
 
@@ -12,7 +12,7 @@ Clone the applicaiton and run:
 1. Add/Remove to favourites
 1. Navigate by router (Pages/Details of car/404)
 
-**Explaination:**
+**Explanation:**
 Manufacturers and colors list are in global state (redux store) as their values affect the list of cars. The list of cars are manipulated in local state of `<CarsBlock />`. 
 
 There is React Router to handle different routes like:
