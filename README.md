@@ -25,10 +25,11 @@ Note : StockNumber is randomly generated on every instance of yarn start of mock
 Unit test cases for reducers, actions and stateless components are in __tests__ folder. 
 
 App:
-![App](1.png?raw=true "App")
+![App](2.png?raw=true "App")
 
 Test Coverage:
-![TestCoverage](2.png?raw=true "TestCoverage")
+![TestCoverage](1.png?raw=true "TestCoverage")
+
 
 
 
